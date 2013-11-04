@@ -373,7 +373,7 @@ module XMLSecurity
         raise "Failed loading key" if key.null?
         raise "Failed adding key to mgr" if XMLSecurity.xmlSecOpenSSLAppDefaultKeysMngrAdoptKey(kmgr, key) < 0
 
-        doc = XMLSecurity.xmlSecParseMemory(xmlstr, xmlstr.length, 0)
+        doc = XMLSecurity.xmlSecParseMemory(xmlstr, xmlstr.bytes.count, 0)
         raise "Failed to parse node" if doc.null?
 
         ctx = XMLSecurity.xmlSecEncCtxCreate(kmgr)
