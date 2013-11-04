@@ -307,7 +307,7 @@ module XMLSecurity
         raise "failed adding key to mgr" if XMLSecurity.xmlSecOpenSSLAppDefaultKeysMngrAdoptKey(kmgr, key) < 0
 
         # parse the xml
-        doc = XMLSecurity.xmlSecParseMemory(xml, xml.length, 0)
+        doc = XMLSecurity.xmlSecParseMemory(xml, xml.bytes.count, 0)
         root = XMLSecurity.xmlDocGetRootElement(doc)
 
         XMLSecurity.register_xml_id_attribute(doc, root)
